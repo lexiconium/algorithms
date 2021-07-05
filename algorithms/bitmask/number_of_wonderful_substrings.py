@@ -2,10 +2,10 @@
 
 class Solution:
     def wonderfulSubstrings(self, word: str) -> int:
-        count = [1] + [0] * 1024
+        cnt_status = [1] + [0] * 1024
         cnt = idx = 0
         for c in word:
             idx ^= 1 << (ord(c) - ord('a'))
-            cnt += count[idx] + sum(count[idx ^ (1 << n)] for n in range(10))
-            count[idx] += 1
+            cnt += cnt_status[idx] + sum(cnt_status[idx ^ (1 << n)] for n in range(10))
+            cnt_status[idx] += 1
         return cnt
