@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/number-of-wonderful-substrings/
 # https://leetcode.com/problems/number-of-wonderful-substrings/discuss/1299552/JavaC%2B%2BPython-Bit-Mask-%2B-Prefix
+# time complexity: O(10n)
 
 class Solution:
     def wonderfulSubstrings(self, word: str) -> int:
