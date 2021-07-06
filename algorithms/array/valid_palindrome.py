@@ -1,3 +1,7 @@
+# https://leetcode.com/problems/valid-palindrome/
+
+# time complexity: O(n)
+
 import re
 
 class Solution:

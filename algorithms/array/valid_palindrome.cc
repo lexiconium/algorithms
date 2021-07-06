@@ -1,3 +1,7 @@
+// https://leetcode.com/problems/valid-palindrome/
+
+// time complexity: O(n)
+
 #include <string>
 
 using namespace std;
