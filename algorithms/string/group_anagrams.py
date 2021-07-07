@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/group-anagrams/
 
-#time complexity: O(nmlog(m))
+# time complexity: O(nmlog(m))
 
 import collections
 
