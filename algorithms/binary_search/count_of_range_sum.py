@@ -2,27 +2,19 @@
 
 # time complexity: O(nlog(n))
 
+import bisect
+
 class Solution:
     def countRangeSum(self, nums: list[int], lower: int, upper: int) -> int:
-        sum_n_elements = [0]
-        for n in nums:
-            sum_n_elements.append(sum_n_elements[-1] + n)
-            
-        def merge_sort(lo, hi):
-            mid = (lo + hi) // 2
-            if mid == lo:
-                return 0
-            cnt = merge_sort(lo, mid) + merge_sort(mid, hi)
-            
-            i = j = mid
-            for left in sum_n_elements[lo:mid]:
-                while i < hi and sum_n_elements[i] - left < lower:
-                    i += 1
-                while j < hi and sum_n_elements[j] - left <= upper:
-                    j += 1
-                cnt += j - i
-                
-            sum_n_elements[lo:hi] = sorted(sum_n_elements[lo:hi])
-            return cnt
+        nums.insert(0, 0)
+        prefix_sum = [0]
+        for i in range(1, len(nums)):
+            nums[i] += nums[i - 1]
+            prefix_sum.append(nums[i])
+        prefix_sum.sort()
         
-        return merge_sort(0, len(sum_n_elements))
+        cnt = 0
+        for n in nums:
+            del prefix_sum[bisect.bisect_left(prefix_sum, n)]
+            cnt += bisect.bisect_right(prefix_sum, n + upper) - bisect.bisect_left(prefix_sum, n + lower)
+        return cnt
