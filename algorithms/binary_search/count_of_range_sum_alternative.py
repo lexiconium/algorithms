@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/count-of-range-sum/
+# https://leetcode.com/problems/count-of-range-sum/discuss/77991/Short-and-simple-O(n-log-n)
 
 # time complexity: O(nlog(n))
 
