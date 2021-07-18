@@ -5,9 +5,9 @@
 
 class Solution:
     def countRangeSum(self, nums: list[int], lower: int, upper: int) -> int:
-        sum_n_elements = [0]
+        prefix_sums = [0]
         for n in nums:
-            sum_n_elements.append(sum_n_elements[-1] + n)
+            prefix_sums.append(prefix_sums[-1] + n)
             
         def merge_sort(lo, hi):
             mid = (lo + hi) // 2
@@ -16,14 +16,14 @@ class Solution:
             cnt = merge_sort(lo, mid) + merge_sort(mid, hi)
             
             i = j = mid
-            for left in sum_n_elements[lo:mid]:
-                while i < hi and sum_n_elements[i] - left < lower:
+            for pre_sum in prefix_sums[lo:mid]:
+                while i < hi and prefix_sums[i] - pre_sum < lower:
                     i += 1
-                while j < hi and sum_n_elements[j] - left <= upper:
+                while j < hi and prefix_sums[j] - pre_sum <= upper:
                     j += 1
                 cnt += j - i
                 
-            sum_n_elements[lo:hi] = sorted(sum_n_elements[lo:hi])
+            prefix_sums[lo:hi] = sorted(prefix_sums[lo:hi])
             return cnt
         
-        return merge_sort(0, len(sum_n_elements))
+        return merge_sort(0, len(prefix_sums))
