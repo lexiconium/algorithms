@@ -10,7 +10,7 @@ class Solution:
         nums.sort(reverse=True)
         used, target = [False] * (_len := len(nums)), _sum // k
 
-        def dfs(k, start, curr):
+        def dfs(k, start: int, curr: int) -> bool:
             if curr == target:
                 return True if k == 2 else dfs(k - 1, 0, 0)
 
