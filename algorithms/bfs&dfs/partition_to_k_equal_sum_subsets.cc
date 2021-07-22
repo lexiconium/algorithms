@@ -29,7 +29,7 @@ public:
         if (sum % k)
             return false;
 
-        sort(nums.begin(), nums.end(), [](const auto &left, const auto &right) { return left < right; });
+        sort(nums.begin(), nums.end(), greater<int>());
         len = nums.size(), target = sum / k;
         _nums = nums, used = vector<bool>(len);
         return dfs(k, 0, 0);
