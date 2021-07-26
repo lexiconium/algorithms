@@ -1,3 +1,4 @@
 .DS_Store
 .vscode
 machine_learning/MNIST_data/
+*/__pycache__/
