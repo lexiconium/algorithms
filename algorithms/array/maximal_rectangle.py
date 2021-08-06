@@ -8,7 +8,8 @@ class Solution:
         if not matrix or not matrix[0]:
             return 0
 
-        height = [0] * ((_len := len(matrix[0])) + 1)
+        _len = len(matrix[0])
+        height = [0] * (_len + 1)
         _max = 0
         for row in matrix:
             for i in range(_len):
