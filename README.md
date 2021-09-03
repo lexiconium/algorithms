@@ -1,9 +1,9 @@
 # algorithms
 
-## Description
 ```python
 algorithms = {
-  "leetcode": ["array", "bfs&dfs", "binary_search", "bit", "dp", "hash", "heap", "math", "string"],
+  "leetcode": ["array", "bfs&dfs", "binary_search",
+               "bit", "dp", "hash", "heap", "math", "string"],
   "programmers": ["hash", "heap", "sort", "stack_queue"]
 }
 ```
