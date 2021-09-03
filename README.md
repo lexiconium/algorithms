@@ -1,4 +1,4 @@
-# compsci-studies
+# algorithms
 
 ## test
 ```python
