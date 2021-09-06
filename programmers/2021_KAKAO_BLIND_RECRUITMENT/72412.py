@@ -16,10 +16,10 @@ def solution(info, query):
     for key in applicants:
         applicants[key].sort()
     
-    ans = []
+    fulfills = []
     for requirement in query:
         *requirement, score = requirement.replace(' and', '').replace('- ', '').split()
         fulfilled = applicants[''.join(requirement)]
-        ans.append(len(fulfilled) - bisect_left(fulfilled, int(score)))
+        fulfills.append(len(fulfilled) - bisect_left(fulfilled, int(score)))
     
-    return ans
+    return fulfills
