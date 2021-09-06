@@ -1,3 +1,5 @@
+# https://programmers.co.kr/learn/courses/30/lessons/72412
+
 from bisect import bisect_left
 from collections import defaultdict
 from itertools import combinations
