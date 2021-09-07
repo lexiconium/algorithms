@@ -1,7 +1,5 @@
 # https://programmers.co.kr/learn/courses/30/lessons/72413#
 
-import heapq
-
 def solution(n, s, a, b, fares):
     dp = [[float('inf') for _ in range(n)] for _ in range(n)]
     for i in range(n):
