@@ -4,7 +4,8 @@
 algorithms = {
   "leetcode": ["array", "bfs&dfs", "binary_search",
                "bit", "dp", "hash", "heap", "math", "string"],
-  "programmers": ["hash", "heap", "sort", "stack_queue", "greedy", "2020_Kakao", "2021_Kakao"]
+  "programmers": ["hash", "heap", "sort", "stack_queue", "greedy", "dp",
+                  "2020_Kakao", "2021_Kakao", "weekly challenge"]
 }
 ```
 
