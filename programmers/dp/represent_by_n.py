@@ -8,9 +8,8 @@ def solution(N, number):
             for num1 in dp[m]:
                 for num2 in dp[n - m]:
                     dp[n].add(num1 + num2)
+                    dp[n].add(num1 - num2)
                     dp[n].add(num1 * num2)
-                    if num1 - num2 >= 0:
-                        dp[n].add(num1 - num2)
                     if num2:
                         dp[n].add(num1 // num2)
         
