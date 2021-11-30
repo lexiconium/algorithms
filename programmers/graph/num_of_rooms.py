@@ -1,38 +1,36 @@
+# https://programmers.co.kr/learn/courses/30/lessons/49190
 # https://bellog.tistory.com/147
 
 from collections import defaultdict, deque
 
 
 def solution(arrows):
-    answer = 0
-    move = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
-    now = (0, 0)
+    dp = [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
 
-    visited = defaultdict(int)
-    visited_dir = defaultdict(int)
-
-    queue = deque([now])
-    for i in arrows:
+    q = deque([(0, 0)])
+    for d in arrows:
         for _ in range(2):
-            next = (now[0] + move[i][0], now[1] + move[i][1])
-            queue.append(next)
+            x, y = q[-1]
+            dx, dy = dp[d]
+            q.append((x + dx, y + dy))
 
-            now = next
+    visited = defaultdict(lambda: False)
+    visited_from = defaultdict(set)
+    cnt = 0
 
-    now = queue.popleft()
-    visited[now] = 1
-
-    while queue:
-        next = queue.popleft()
-
-        if visited[next] == 1:
-            if visited_dir[(now, next)] == 0:
-                answer += 1
+    prev = q.popleft()
+    visited[prev] = True
+    while q:
+        curr = q.popleft()
+        if visited[curr]:
+            if prev not in visited_from[curr]:
+                cnt += 1
         else:
-            visited[next] = 1
+            visited[curr] = True
 
-        visited_dir[(now, next)] = 1
-        visited_dir[(next, now)] = 1
-        now = next
+        visited_from[curr].add(prev)
+        visited_from[prev].add(curr)
 
-    return answer
+        prev = curr
+
+    return cnt
