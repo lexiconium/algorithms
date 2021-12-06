@@ -6,7 +6,8 @@ algorithms = {
                "bit", "dp", "hash", "heap", "math", "string"],
   "programmers": ["hash", "heap", "sort", "stack_queue", "greedy", "dp",
                   "brute_force", "binary_search",
-                  "2020_Kakao", "2021_Kakao", "weekly challenge"]
+                  "2020_Kakao", "2021_Kakao", "weekly challenge"],
+  "baekjoon": ["삼성 SW 역량 테스트 기출 문제"]
 }
 ```
 
