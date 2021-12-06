@@ -114,18 +114,18 @@ class Game:
                 if prev_tilt and n % 2 == prev_tilt % 2:
                     continue
 
-                after_position = game.positions_after_tilt(positions, direction)
-                if game.check_ends(after_position[Cell.RED], direction):
-                    if not game.blue_follwoing(**after_position, direction=direction):
+                after_positions = game.positions_after_tilt(positions, direction)
+                if game.check_ends(after_positions[Cell.RED], direction):
+                    if not game.blue_follwoing(**after_positions, direction=direction):
                         return cnt + 1
                     continue
 
                 if cnt > 9:
                     return -1
 
-                if not game.check_in_cache(after_position):
-                    if not game.blue_in_hole(after_position[Cell.BLUE], direction):
-                        q.append((after_position, n, cnt + 1))
+                if not game.check_in_cache(after_positions):
+                    if not game.blue_in_hole(after_positions[Cell.BLUE], direction):
+                        q.append((after_positions, n, cnt + 1))
 
         return -1
 
