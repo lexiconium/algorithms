@@ -27,8 +27,7 @@ class TetrominoSum:
 
     def rotate_clockwise(self, template):
         pivot, *body = template
-        body = [(-c, r) for r, c in body]
-        return [pivot] + [(r, c) for r, c in body]
+        return [pivot] + [(-c, r) for r, c in body]
 
     def fit_tetrominos(self, pivot):
         tetrominos = []
