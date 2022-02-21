@@ -3,7 +3,6 @@
 # Runtime: 1488 ms, faster than 92.82% of Python3 online submissions for Operations on Tree.
 # Memory Usage: 17.7 MB, less than 29.23% of Python3 online submissions for Operations on Tree.
 
-
 from collections import defaultdict
 from typing import List
 
