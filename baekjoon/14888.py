@@ -27,4 +27,5 @@ def calc_seq(num: int, idx: int, n_plus: int, n_min: int, n_mult: int, n_div: in
 
 
 calc_seq(nums[0], 1, *operators)
+
 print(_max, _min, sep="\n")
