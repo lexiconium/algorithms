@@ -5,6 +5,7 @@ sys.stdin = open(
     os.path.join("/", *__file__.split("/")[:-1], "sample_input.txt"), "r"
 )
 
+# https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq
 
 from collections import deque
 from copy import copy
@@ -13,11 +14,11 @@ DR = [-1, 0, 1, 0]
 DC = [0, 1, 0, -1]
 
 
-def is_valid(m: list[list[int]], r: int, c: int, d: int):
-    return 0 <= r + DR[d] < len(m) and 0 <= c + DC[d] < len(m[0])
+def is_valid(r: int, c: int):
+    return 0 <= r < len(m) and 0 <= c < len(m[0])
 
 
-def bfs(m: list[list[int]], r: int, c: int, k: int):
+def bfs(r: int, c: int, k: int):
     visited = set()
     q = deque([(1, r, c, m[r][c], True, visited)])
     max_dist = 1
@@ -28,10 +29,9 @@ def bfs(m: list[list[int]], r: int, c: int, k: int):
         visited.add((r, c))
 
         for d in range(4):
-            if not is_valid(m, r, c, d):
-                continue
-
             _r, _c = r + DR[d], c + DC[d]
+            if not is_valid(_r, _c):
+                continue
             if (_r, _c) in visited:
                 continue
 
@@ -45,7 +45,7 @@ def bfs(m: list[list[int]], r: int, c: int, k: int):
     return max_dist
 
 
-def max_height_points(m: list[list[int]]):
+def max_height_points():
     max_height = max(max(row) for row in m)
     return (
         (r, c)
@@ -58,4 +58,4 @@ def max_height_points(m: list[list[int]]):
 for t in range(1, int(input()) + 1):
     n, k = map(int, input().split())
     m = [list(map(int, input().split())) for _ in range(n)]
-    print(f"#{t} {max(bfs(m, r, c, k) for r, c in max_height_points(m))}")
+    print(f"#{t} {max(bfs(r, c, k) for r, c in max_height_points())}")
