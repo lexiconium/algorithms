@@ -5,6 +5,8 @@ sys.stdin = open(
     os.path.join("/", *__file__.split("/")[:-1], "sample_input.txt"), "r"
 )
 
+# https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpLlKAQ4DFAUq
+
 import heapq
 
 DR = [-1, 0, 1, 0]
@@ -22,7 +24,7 @@ STRUCT = {
 }
 
 
-def is_valid(tunnel: list[list[int]], r: int, c: int):
+def is_valid(r: int, c: int):
     return 0 <= r < len(tunnel) and 0 <= c < len(tunnel[0])
 
 
@@ -30,7 +32,7 @@ def is_connected(d: int, struct_id: int):
     return (d + 2) % 4 in STRUCT[struct_id]
 
 
-def bfs(tunnel: list[list[int]], r: int, c: int, l: int):
+def bfs(r: int, c: int, l: int):
     visited = {(r, c)}
 
     pq = [(1, r, c)]
@@ -41,7 +43,7 @@ def bfs(tunnel: list[list[int]], r: int, c: int, l: int):
 
         for d in STRUCT[tunnel[r][c]]:
             _r, _c = r + DR[d], c + DC[d]
-            if not is_valid(tunnel, _r, _c):
+            if not is_valid(_r, _c):
                 continue
             if not is_connected(d, tunnel[_r][_c]):
                 continue
@@ -57,4 +59,4 @@ def bfs(tunnel: list[list[int]], r: int, c: int, l: int):
 for t in range(1, int(input()) + 1):
     m, n, r, c, l = map(int, input().split())
     tunnel = [list(map(int, input().split())) for _ in range(m)]
-    print(f"#{t} {bfs(tunnel, r, c, l)}")
+    print(f"#{t} {bfs(r, c, l)}")
