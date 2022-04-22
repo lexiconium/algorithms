@@ -13,7 +13,7 @@ def unsqueeze(tanks: list[int]):
     return list(map(lambda x: [x], tanks))
 
 
-def get_wrap_pivot(tanks: list):
+def get_wrap_pivot(tanks: list[list[int]]):
     for i, _tanks in enumerate(tanks):
         if len(_tanks) == 1:
             return i
