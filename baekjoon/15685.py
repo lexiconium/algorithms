@@ -24,8 +24,9 @@ class DragonCurve:
 
         self.components.extend(_components)
 
-    def get_components(self):
-        return set(self.components)
+    @classmethod
+    def make(cls, x: int, y: int, d: int, g: int):
+        return set(cls(x, y, d, g).components)
 
 
 def count_squares(components: set[tuple[int, int]]):
@@ -45,7 +46,6 @@ def count_squares(components: set[tuple[int, int]]):
 
 curve_components = set()
 for _ in range(int(input())):
-    curve = DragonCurve(*map(int, input().split()))
-    curve_components |= curve.get_components()
+    curve_components |= DragonCurve.make(*map(int, input().split()))
 
 print(count_squares(curve_components))
