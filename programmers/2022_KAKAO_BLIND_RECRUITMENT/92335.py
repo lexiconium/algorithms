@@ -19,8 +19,6 @@ def is_prime(n: int):
     if n == 1:
         return False
 
-    print(n)
-
     for denominator in range(2, int(n ** 0.5) + 1):
         if n % denominator == 0:
             return False
