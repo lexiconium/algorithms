@@ -3,3 +3,4 @@
 .vscode
 .idea
 test.*
+create_leetcode_script.py
