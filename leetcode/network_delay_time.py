@@ -1,31 +1,22 @@
-# https://leetcode.com/problems/network-delay-time/description/
+# https://leetcode.com/problems/network-delay-time/
+
+from collections import defaultdict
+import heapq
+
 
 class Solution:
-    def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
+    def networkDelayTime(self, times: list[list[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
+        for u, v, w in times:
+            graph[u].append((v, w))
 
-        for u, v, t in times:
-            graph[u].append((v, t))
+        dists = defaultdict(int)
+        q = [(0, k)]
+        while q:
+            t, u = heapq.heappop(q)
+            if u not in dists:
+                dists[u] = t
+                for v, w in graph[u]:
+                    heapq.heappush(q, (t + w, v))
 
-        pq = [(0, k)]
-        visited = 1 << (k - 1)
-        visited_all = (1 << n) - 1
-
-        min_time = 0
-
-        while pq:
-            t, u = heapq.heappop(pq)
-
-            visited |= 1 << (u - 1)
-            min_time = max(min_time, t)
-
-            if visited == visited_all:
-                return min_time
-
-            for v, dt in graph[u]:
-                if (1 << (v - 1)) & visited:
-                    continue
-
-                heapq.heappush(pq, (t + dt, v))
-
-        return -1
+        return max(dists.values()) if len(dists) == n else -1
