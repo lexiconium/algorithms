@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/stone-game/solutions
+# https://leetcode.com/problems/stone-game
 # https://leetcode.com/problems/stone-game/solutions/154610/dp-or-just-return-true
 
 class Solution:
