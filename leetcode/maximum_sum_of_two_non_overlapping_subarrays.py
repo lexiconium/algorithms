@@ -8,7 +8,7 @@ class Solution:
 
         len_nums = len(nums)
 
-        def dfs(target_len: int, begin: int = 0, end: int = len_nums) -> int:
+        def max_sum(target_len: int, begin: int = 0, end: int = len_nums) -> int:
             if target_len > end - begin:
                 return -1
             return max(
@@ -17,8 +17,8 @@ class Solution:
             )
 
         return max(
-            max(dfs(firstLen, end=i) + dfs(secondLen, begin=i) for i in range(len(nums))),
-            max(dfs(secondLen, end=i) + dfs(firstLen, begin=i) for i in range(len(nums)))
+            max(max_sum(firstLen, end=i) + max_sum(secondLen, begin=i) for i in range(len(nums))),
+            max(max_sum(secondLen, end=i) + max_sum(firstLen, begin=i) for i in range(len(nums)))
         )
 
     def maxSumTwoNoOverlap(self, nums: list[int], firstLen: int, secondLen: int) -> int:
