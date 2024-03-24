@@ -1,0 +1,25 @@
+WITH
+    HIGHEST_REVIEWER AS (
+        SELECT
+            MEMBER_ID,
+            COUNT(*) NUM_REVIEWS
+        FROM
+            REST_REVIEW
+        GROUP BY
+            MEMBER_ID
+        ORDER BY
+            NUM_REVIEWS DESC
+        LIMIT
+            1
+    )
+SELECT
+    p.MEMBER_NAME,
+    r.REVIEW_TEXT,
+    DATE_FORMAT (r.REVIEW_DATE, '%Y-%m-%d') REVIEW_DATE
+FROM
+    MEMBER_PROFILE p
+    JOIN REST_REVIEW r ON p.MEMBER_ID = r.MEMBER_ID
+    JOIN HIGHEST_REVIEWER hr ON r.MEMBER_ID = hr.MEMBER_ID
+ORDER BY
+    r.REVIEW_DATE,
+    r.REVIEW_TEXT;
