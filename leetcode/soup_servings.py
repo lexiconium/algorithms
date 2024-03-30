@@ -1,6 +1,9 @@
 # https://leetcode.com/problems/soup-servings/description/
 
 
+from functools import cache
+
+
 class Solution:
     def soupServings(self, n: int) -> float:
         if n >= 4800:
